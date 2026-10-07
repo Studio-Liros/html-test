@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>On/off background</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: #000;
+      transition: background-color 240ms ease;
+    }
+
+    body.is-on {
+      background: #fff;
+    }
+
+    button {
+      min-width: 112px;
+      min-height: 48px;
+      border: 1px solid #888;
+      border-radius: 4px;
+      background: #777;
+      color: #fff;
+      font: 600 16px/1 system-ui, sans-serif;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #666;
+    }
+
+    button:focus-visible {
+      outline: 3px solid #999;
+      outline-offset: 4px;
+    }
+  </style>
+</head>
+<body>
+  <button type="button" aria-pressed="false">On/Off</button>
+  <script>
+    const toggle = document.querySelector("button");
+
+    toggle.addEventListener("click", () => {
+      const isOn = document.body.classList.toggle("is-on");
+      toggle.setAttribute("aria-pressed", String(isOn));
+    });
+  </script>
+</body>
+</html>
